@@ -5,6 +5,8 @@ Personal configuration files synced across machines.
 ## What's Included
 
 - `.claude/instructions.md` - Global Claude Code instructions
+- `configs.json` - MCP servers and API keys (secrets stored in 1Password)
+- `sync.sh` - Syncs configs and loads credentials from 1Password
 
 ## Installation
 
@@ -21,29 +23,26 @@ The install script creates symlinks from your home directory to files in this re
 
 ## Usage
 
-### Editing Instructions
+### Sync configs and start Claude
 
-Edit `~/.claude/instructions.md` on any machine. Since it's symlinked to `~/dotfiles/.claude/instructions.md`, changes appear in the repo automatically.
+```bash
+source ~/dotfiles/sync.sh
+```
 
-Commit and push:
+This pulls latest configs and loads API keys from 1Password.
+
+### Add new API keys
+
+1. Add item to 1Password vault `INTEGRATIONS_API_MCP`
+2. Item title becomes env var (e.g., "Eventbrite API" → `EVENTBRITE_API`)
+3. Reference in `configs.json` as `${EVENTBRITE_API}`
+
+### Update configs
 
 ```bash
 cd ~/dotfiles
-git add .claude/instructions.md
-git commit -m "Update Claude instructions"
+# Edit configs.json
+git add configs.json
+git commit -m "Add new integration"
 git push
-```
-
-Pull on other machines:
-
-```bash
-cd ~/dotfiles
-git pull
-```
-
-## Manual Setup (if install.sh doesn't work)
-
-```bash
-mkdir -p ~/.claude
-ln -sf ~/dotfiles/.claude/instructions.md ~/.claude/instructions.md
 ```

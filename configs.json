@@ -1,0 +1,6 @@
+{
+  "mcpServers": {},
+  "apiKeys": {
+    "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+  }
+}

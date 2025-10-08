@@ -29,6 +29,19 @@ else
     echo "✓ Linked .claude/instructions.md"
 fi
 
+# Make sync script executable
+chmod +x ~/dotfiles/sync.sh
+echo "✓ sync.sh ready"
+
+echo ""
 echo "================================================"
 echo "Installation complete!"
 echo "================================================"
+echo ""
+echo "Next steps:"
+echo "1. Install 1Password CLI: brew install --cask 1password-cli"
+echo "2. Enable 1Password Settings → Developer → 'Integrate with 1Password CLI'"
+echo "3. Create vault 'INTEGRATIONS_API_MCP' in 1Password"
+echo "4. Add API keys to the vault (title becomes env var name)"
+echo "5. Run: source ~/dotfiles/sync.sh"
+echo ""
