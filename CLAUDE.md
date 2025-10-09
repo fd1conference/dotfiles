@@ -1,13 +1,21 @@
 # Global Claude Code Instructions
 
+## Session Start
+**First step of every session**: Check repository sync status
+1. Query GitHub for list of all repositories in the `fd1conference` organization using `gh repo list fd1conference`
+2. Check the local machine (home directory and common project locations) to identify which of those repositories have been cloned locally
+3. For each local repository found:
+   - Run `git fetch origin` to update remote tracking branches
+   - Compare local branch with remote using `git status` or `git rev-list`
+   - Report to user if any repositories are behind, ahead, or diverged from remote
+4. If the `dotfiles` repository specifically has updates available:
+   - Pull the changes with `git pull origin main`
+   - Run `./sync.sh` to sync configurations and credentials
+5. Only proceed with other user-requested tasks after completing this repository sync check
+
 ## Git Commits
 - Never include Claude Code attribution or self-promotion in commit messages or code comments
 - Do not add "Generated with Claude Code" or "Co-Authored-By: Claude" to commits
-
-## Session Start (Git-Enabled Projects)
-- At the beginning of any session in a git-enabled project, check if the local branch is up to date with the remote repository
-- Inform the user if there are any differences between local and remote branches before making any modifications
-- Let the user know if they need to pull changes before proceeding
 
 ## General Coding Philosophy
 - Always seek and overall understanding of the project you are working on before making decisions. Important context will generally be provided by README, CHANGELOG, SESSION HANDOFF and similar files, as well as directories and lists when appropriate. First review these files, then the code itself, and only then begin analysis and recommendations 
