@@ -12,21 +12,21 @@ echo "================================================"
 # Create .claude directory if it doesn't exist
 mkdir -p ~/.claude
 
-# Symlink Claude instructions
-if [ -f ~/.claude/instructions.md ] || [ -L ~/.claude/instructions.md ]; then
-    echo "WARNING: ~/.claude/instructions.md already exists"
+# Symlink CLAUDE.md for global Claude Code instructions
+if [ -f ~/.claude/CLAUDE.md ] || [ -L ~/.claude/CLAUDE.md ]; then
+    echo "WARNING: ~/.claude/CLAUDE.md already exists"
     read -p "Overwrite? (y/n) " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "Skipping Claude instructions..."
+        echo "Skipping CLAUDE.md..."
     else
-        rm -f ~/.claude/instructions.md
-        ln -sf ~/dotfiles/.claude/instructions.md ~/.claude/instructions.md
-        echo "✓ Linked .claude/instructions.md"
+        rm -f ~/.claude/CLAUDE.md
+        ln -sf ~/dotfiles/CLAUDE.md ~/.claude/CLAUDE.md
+        echo "✓ Linked CLAUDE.md"
     fi
 else
-    ln -sf ~/dotfiles/.claude/instructions.md ~/.claude/instructions.md
-    echo "✓ Linked .claude/instructions.md"
+    ln -sf ~/dotfiles/CLAUDE.md ~/.claude/CLAUDE.md
+    echo "✓ Linked CLAUDE.md"
 fi
 
 # Make sync script executable

@@ -4,7 +4,7 @@ Personal configuration files synced across machines.
 
 ## What's Included
 
-- `.claude/instructions.md` - Global Claude Code instructions
+- `CLAUDE.md` - Global Claude Code instructions (automatically loaded in every conversation)
 - `configs.json` - MCP servers and API keys (secrets stored in 1Password)
 - `sync.sh` - Syncs configs and loads credentials from 1Password
 
@@ -14,7 +14,7 @@ On a new machine:
 
 ```bash
 cd ~
-git clone https://github.com/yourusername/dotfiles.git
+git clone https://github.com/fd1conference/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
@@ -45,4 +45,21 @@ cd ~/dotfiles
 git add configs.json
 git commit -m "Add new integration"
 git push
+```
+
+### Edit Claude instructions
+
+```bash
+cd ~/dotfiles
+# Edit CLAUDE.md
+git add CLAUDE.md
+git commit -m "Update Claude instructions"
+git push
+```
+
+On other machines, pull the changes:
+
+```bash
+cd ~/dotfiles
+git pull
 ```
